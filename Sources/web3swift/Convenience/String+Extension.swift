@@ -67,11 +67,11 @@ extension String {
     }
     
     func hasHexPrefix() -> Bool {
-        return self.hasPrefix("0x")
+        return (self.hasPrefix("0x") || self.hasPrefix("t"))
     }
     
     func stripHexPrefix() -> String {
-        if self.hasPrefix("0x") {
+        if (self.hasPrefix("0x") || self.hasPrefix("t")) {
             let indexStart = self.index(self.startIndex, offsetBy: 2)
             return String(self[indexStart...])
         }
@@ -79,7 +79,7 @@ extension String {
     }
     
     func addHexPrefix() -> String {
-        if !self.hasPrefix("0x") {
+        if !(self.hasPrefix("0x") || self.hasPrefix("t")) {
             return "0x" + self
         }
         return self

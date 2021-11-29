@@ -95,7 +95,7 @@ public struct EthereumAddress: Equatable {
                     return
                 } else {
                     let checksummedAddress = EthereumAddress.toChecksumAddress(data.toHexString().addHexPrefix())
-                    guard checksummedAddress == addressString else {return nil}
+                    guard checksummedAddress?.stripHexPrefix() == addressString.stripHexPrefix() else {return nil}
                     self._address = data.toHexString().addHexPrefix()
                     self.type = .normal
                     return

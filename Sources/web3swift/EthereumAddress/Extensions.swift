@@ -13,7 +13,7 @@ extension Array where Element == UInt8 {
         self.init()
         self.reserveCapacity(hex.unicodeScalars.lazy.underestimatedCount)
         var buffer: UInt8?
-        var skip = hex.hasPrefix("0x") ? 2 : 0
+        var skip = (hex.hasPrefix("0x") || hex.hasPrefix("t")) ? 2 : 0
         for char in hex.unicodeScalars.lazy {
             guard skip == 0 else {
                 skip -= 1
