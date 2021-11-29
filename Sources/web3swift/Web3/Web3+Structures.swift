@@ -66,7 +66,7 @@ extension TransactionOptions: Decodable {
         
         let toString = try container.decode(String?.self, forKey: .to)
         var to: EthereumAddress?
-        if toString == nil || toString == "0x" || toString == "0x0" {
+        if toString == nil || toString == "0x" || toString == "t0" || toString == "t1" || toString == "0x0" {
             to = EthereumAddress.contractDeploymentAddress()
         } else {
             guard let addressString = toString else {throw Web3Error.dataError}
